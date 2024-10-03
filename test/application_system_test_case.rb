@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  if ENV["CAPYBARA_SERVER_PORT"]
-    served_by host: "rails-app", port: ENV["CAPYBARA_SERVER_PORT"]
+  driven_by :selenium,
+    using: (ENV["SHOW_BROWSER"] ? :chrome : :headless_chrome),
+    screen_size: [1400, 1400] do |options|
+      # Allows running in Docker
+      options.add_argument("--disable-dev-shm-usage")
+      options.add_argument("--no-sandbox")
 
-    driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ], options: {
-      browser: :remote,
-      url: "http://#{ENV["SELENIUM_HOST"]}:4444"
-    }
-  else
-    driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ]
-  end
+      # Fixes slowdowns on macOS
+      options.add_argument("--disable-gpu")
+    end
 end
