@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby file: ".ruby-version"
 
+gem "rack-canonical-host"
 gem "rails", github: "rails/rails", branch: "main"
 gem "propshaft"
 gem "pg", "~> 1.1"
