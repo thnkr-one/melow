@@ -35,6 +35,8 @@ group :development do
 end
 
 group :test do
+  gem "webmock"
+  gem "vcr"
   gem "shoulda-matchers"
   gem "shoulda-context"
   gem "mocha"
