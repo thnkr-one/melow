@@ -33,6 +33,7 @@ group :development do
 end
 
 group :test do
+  gem "mocha"
   gem "capybara", require: false
   gem "selenium-webdriver", require: false
 end
