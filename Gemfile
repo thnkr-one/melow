@@ -20,11 +20,18 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 gem "thruster", require: false
 
+gem 'calypso', git: 'git@github.com:thnkr-one/calypso.git'
+gem 'httparty'
+gem 'good_job'
+# gem 'envo', git: 'git@github.com:thnkr-one/envo.git'
+
 group :development, :test do
   gem "dotenv", ">= 3.0"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem 'faker'
+  gem 'yaml_db'
 end
 
 group :development do
