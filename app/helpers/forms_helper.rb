@@ -1,6 +1,6 @@
 module FormsHelper
   def styled_form_with(**options, &block)
-    options[:builder] = StyledFormBuilder
+    options[:builder] ||= ActionView::Helpers::FormBuilder
     form_with(**options, &block)
   end
 

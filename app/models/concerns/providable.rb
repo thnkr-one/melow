@@ -25,7 +25,7 @@ module Providable
 
     private
       def self_hosted?
-        Rails.application.config.app_mode.self_hosted?
+        #        Rails.application.config.app_mode.self_hosted?
       end
   end
 end

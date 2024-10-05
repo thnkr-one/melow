@@ -24,10 +24,30 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
   </head>
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+    <div class="fixed z-50 space-y-1 top-6 right-10">
+      <div id="notification-tray">
+        <%= render_flash_notifications %>
+      </div>
+    </div>
+
+    <%= family_notifications_stream %>
+    <%= family_stream %>
+
+    <%= content_for?(:content) ? yield(:content) : yield %>
+
+    <%= turbo_frame_tag "modal" %>
+    <%= turbo_frame_tag "drawer" %>
+
+    <%= render "shared/confirm_modal" %>
+
+
+
   </body>
 </html>

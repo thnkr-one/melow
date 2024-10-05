@@ -5,12 +5,12 @@ module Invitable
     helper_method :invite_code_required?
   end
 
-private
-  def invite_code_required?
-    self_hosted? ? Setting.require_invite_for_signup : ENV["REQUIRE_INVITE_CODE"] == "true"
-  end
+  private
+    def invite_code_required?
+      self_hosted? ? Setting.require_invite_for_signup : ENV["REQUIRE_INVITE_CODE"] == "true"
+    end
 
-  def self_hosted?
-    Rails.application.config.app_mode.self_hosted?
-  end
+    def self_hosted?
+      Rails.application.config.app_mode.self_hosted?
+    end
 end

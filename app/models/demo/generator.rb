@@ -45,7 +45,7 @@ class Demo::Generator
     attr_reader :family
 
     def reset_family!
-      family_id = "d99e3c6e-d513-4452-8f24-dc263f8528c0" # deterministic demo id
+      family_id = "d99e3c6e-d513-4452-8f24" # deterministic demo id
 
       family = Family.find_by(id: family_id)
       family.destroy! if family
@@ -55,21 +55,21 @@ class Demo::Generator
 
     def clear_data!
       InviteCode.destroy_all
-      User.find_by_email("user@maybe.local")&.destroy
+      User.find_by_email("user@melow.local")&.destroy
       ExchangeRate.destroy_all
       Security.destroy_all
       Security::Price.destroy_all
     end
 
     def reset_settings!
-      Setting.destroy_all
+      #      Setting.destroy_all
     end
 
     def create_user!
       family.users.create! \
-        email: "user@maybe.local",
-        first_name: "Demo",
-        last_name: "User",
+        email: "user@melow.local",
+        first_name: "User",
+        last_name: "Demo",
         role: "admin",
         password: "password"
     end
@@ -83,7 +83,7 @@ class Demo::Generator
     def create_categories!
       categories = [ "Income", "Food & Drink", "Entertainment", "Travel",
                     "Personal Care", "General Services", "Auto & Transport",
-                    "Rent & Utilities", "Home Improvement", "Shopping" ]
+                    "Rent & Utilities", "Home Improvement", "Shopping", "Stores", "Warehouses", "Business" ]
 
       categories.each do |category|
         family.categories.create!(name: category, color: COLORS.sample)
